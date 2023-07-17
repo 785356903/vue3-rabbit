@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
+    <el-button type="primary">i am button</el-button>
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
@@ -20,7 +20,7 @@ import HelloWorld from './components/HelloWorld.vue'
   <RouterView />
 </template>
 
-<style scoped>
+<style  scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
