@@ -10,7 +10,7 @@ export const lazyPlugin = {
       mounted(el, binding ) {
         // el:指令绑定的那个元素 img
         // binding: binding.value 指令等于号后面的表达式的值
-        console.log(el,binding);
+        // console.log(el,binding);
         const { stop } = useIntersectionObserver(
           el,
           //  通过isIntersecting判断该视图区域 是否在屏幕内 返回boolean
