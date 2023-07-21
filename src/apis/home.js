@@ -22,3 +22,12 @@ export function getNewsAPI () {
 export const getHotAPI = () => {
   return  httpInstance.get('home/hot', {})
 }
+
+/**
+ * @description: 获取所有商品模块
+ * @param {*}
+ * @return {*}
+ */
+export const getGoodsAPI = () => {
+  return httpInstance.get('/home/goods')
+}
