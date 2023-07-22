@@ -24,6 +24,7 @@ li {
   height: 300px;
   margin-right: 10px;
   margin-bottom: 10px;
+  list-style: none;
 
   &:nth-last-child(-n + 4) {
     margin-bottom: 0;
