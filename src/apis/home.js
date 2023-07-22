@@ -1,8 +1,11 @@
-import  httpInstance  from '@/utils/http'
+/** @format */
+
+import httpInstance from '@/utils/http';
 
 // 轮播图
-export function getBannerAPI () {
-  return httpInstance.get('/home/banner')
+export function getBannerAPI(param) {
+  const { distributionSite = '1' } = param;
+  return httpInstance.get('/home/banner', { params: { distributionSite } });
 }
 
 /**
@@ -10,8 +13,8 @@ export function getBannerAPI () {
  * @param {*}
  * @return {*}
  */
-export function getNewsAPI () {
-  return httpInstance.get('/home/new')
+export function getNewsAPI() {
+  return httpInstance.get('/home/new');
 }
 
 /**
@@ -20,8 +23,8 @@ export function getNewsAPI () {
  * @return {*}
  */
 export const getHotAPI = () => {
-  return  httpInstance.get('home/hot', {})
-}
+  return httpInstance.get('home/hot', {});
+};
 
 /**
  * @description: 获取所有商品模块
@@ -29,5 +32,5 @@ export const getHotAPI = () => {
  * @return {*}
  */
 export const getGoodsAPI = () => {
-  return httpInstance.get('/home/goods')
-}
+  return httpInstance.get('/home/goods');
+};
