@@ -1,35 +1,12 @@
 <!-- @format -->
 <script setup>
-import { onMounted, ref } from 'vue';
-import { onBeforeRouteUpdate, useRoute } from 'vue-router';
-import { getTopCategoryAPI } from '@/apis/category';
-import { getBannerAPI } from '@/apis/home';
+import { useBanner } from './composables/useBanner';
+import { useCategory } from './composables/useCategory';
 import GoodsItem from '../Home/components/GoodsItem.vue';
-
-const route = useRoute();
-
-// 获取分类列表 category
-const categoryData = ref({});
-const getCategory = async (id = route.params.id) => {
-  // 如何在setup中获取路由参数 useRoute() -> route 等价于this.$route
-  const res = await getTopCategoryAPI(id);
-  categoryData.value = res.result;
-};
-
-onMounted(() => getCategory());
-onBeforeRouteUpdate(to => {
-  getCategory(to.params.id);
-});
-
+// 获取分类数据
+const { categoryData } = useCategory();
 // 获取 轮播图 banner
-const bannerList = ref([]);
-const getBanner = async () => {
-  const res = await getBannerAPI({
-    distributionSite: '2',
-  });
-  bannerList.value = res.result;
-};
-onMounted(() => getBanner());
+const { bannerList } = useBanner();
 </script>
 
 <template>
