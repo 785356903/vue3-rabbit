@@ -3,7 +3,8 @@
 import httpInstance from '@/utils/http';
 
 // 轮播图
-export function getBannerAPI(param) {
+export function getBannerAPI(param = {}) {
+  // 默认为1 商品为2
   const { distributionSite = '1' } = param;
   return httpInstance.get('/home/banner', { params: { distributionSite } });
 }

@@ -1,10 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/views/Login/index.vue'
-import Layout from '@/views/Layout/index.vue'
-import Home from '@/views/Home/index.vue'
-import Category from '@/views/Category/index.vue'
+/** @format */
+
+import { createRouter, createWebHistory } from 'vue-router';
+import Login from '@/views/Login/index.vue';
+import Layout from '@/views/Layout/index.vue';
+import Home from '@/views/Home/index.vue';
+import Category from '@/views/Category/index.vue';
+import SubCategory from '@/views/SubCategory/index.vue';
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL), 
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -16,17 +19,23 @@ const router = createRouter({
           path: '',
           name: 'home',
           component: Home,
-        },{
+        },
+        {
           path: 'category/:id',
           name: 'category',
           component: Category,
-        }
-      ]
+        },
+        {
+          path: 'category/sub/:id',
+          name: 'sub',
+          component: SubCategory,
+        },
+      ],
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
     },
     // {
     //   path: '/login',
@@ -36,7 +45,7 @@ const router = createRouter({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import('../views/AboutView.vue')
     // }
-  ]
-})
+  ],
+});
 
-export default router
+export default router;
