@@ -46,6 +46,10 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // }
   ],
+  // 路由滚动行为定制
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 export default router;
