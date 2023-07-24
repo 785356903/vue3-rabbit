@@ -38,6 +38,7 @@ onMounted(() => getGoods());
 .home-product {
   background: #fff;
   margin-top: 20px;
+
   .sub {
     margin-bottom: 2px;
 
@@ -104,6 +105,21 @@ onMounted(() => getGoods());
       width: 990px;
       display: flex;
       flex-wrap: wrap;
+
+      li {
+        width: 240px;
+        height: 300px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        &:nth-last-child(-n + 4) {
+          margin-bottom: 0;
+        }
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+      }
     }
   }
 }

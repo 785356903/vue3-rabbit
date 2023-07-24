@@ -20,20 +20,23 @@ defineProps({
 
 <style lang="scss" scoped>
 li {
-  width: 240px;
-  height: 300px;
-  margin-right: 10px;
-  margin-bottom: 10px;
   list-style: none;
-
-  &:nth-last-child(-n + 4) {
-    margin-bottom: 0;
-  }
-
-  &:nth-child(4n) {
-    margin-right: 0;
-  }
 }
+// li {
+//   width: 240px;
+//   height: 300px;
+//   margin-right: 10px;
+//   margin-bottom: 10px;
+//   list-style: none;
+
+//   &:nth-last-child(-n + 4) {
+//     margin-bottom: 0;
+//   }
+
+//   &:nth-child(4n) {
+//     margin-right: 0;
+//   }
+// }
 .goods-item {
   display: block;
   width: 220px;
