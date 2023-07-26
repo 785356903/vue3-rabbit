@@ -4,6 +4,7 @@
 import { getDetail } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import GoodHot from './components/DetailHot.vue';
 
 const route = useRoute();
 const goods = ref({});
@@ -127,12 +128,17 @@ onMounted(() => getGoods());
                     </li>
                   </ul>
                   <!-- 图片 -->
-                  <img v-for="item in goods.details.pictures" :key="item" :src="item" alt="">
+                  <img v-for="item in goods.details.pictures" :key="item" :src="item" alt="" />
                 </div>
               </div>
             </div>
             <!-- 24热榜+专题推荐 -->
-            <div class="goods-aside"></div>
+            <div class="goods-aside">
+              <!-- 24小时热榜 -->
+              <GoodHot :hot-type="1" />
+              <!-- 周热榜 -->
+              <GoodHot :hot-type="2" />
+            </div>
           </div>
         </div>
       </div>
