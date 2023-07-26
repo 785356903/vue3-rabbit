@@ -1,15 +1,19 @@
-import './styles/common.scss'
+/** @format */
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import router from './router'
-import {lazyPlugin} from './dirctives'
+import './styles/common.scss';
+
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
+import router from './router';
+import { lazyPlugin } from './dirctives';
+import { componentPlugin } from './components/idnex.js';
 // 引入懒加载指令并注册
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
-app.use(lazyPlugin)
-app.mount('#app')
+app.use(createPinia());
 
+app.use(componentPlugin);
+app.use(router);
+app.use(lazyPlugin);
+app.mount('#app');
