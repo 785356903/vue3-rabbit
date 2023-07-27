@@ -14,6 +14,11 @@ const getGoods = async () => {
 };
 
 onMounted(() => getGoods());
+
+// sku规格被操作时
+const skuChange = sku => {
+  console.log(sku);
+};
 </script>
 
 <template>
@@ -103,7 +108,7 @@ onMounted(() => getGoods());
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->

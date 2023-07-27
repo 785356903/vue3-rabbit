@@ -21,7 +21,7 @@ const TYPEMAP = {
 };
 // 使用计算属性保持响应式
 const title = computed(() => TYPEMAP[props.hotType]);
-console.log(title);
+// console.log(title);
 // 1. 封装接口
 // 2. 调用接口渲染模版
 const hotList = ref([]);
