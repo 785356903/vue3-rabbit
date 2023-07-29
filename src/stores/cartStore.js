@@ -24,7 +24,17 @@ export const useCartStore = defineStore(
       }
       console.log(cartList.value);
     };
-    return { cartList, addCart };
+    // 删除购物车
+    const delCart = skuId => {
+      // 思路:
+      // 1.找出要删除的下角标 - splice
+      // 2.过滤方法筛 - filter
+      cartList.value = cartList.value.filter(v => v.skuId != skuId);
+
+      // const index = cartList.value.findIndex(v => v.skuId == skuId);
+      // cartList.value.splice(index,1)
+    };
+    return { cartList, addCart, delCart };
   },
   {
     persist: true, //可以自定义配置存储的地方，这是默认储存
