@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import 'element-plus/theme-chalk/el-message.css';
 import { useUserStore } from '@/stores/login';
+import router from '@/router';
 //创建一个axios实例
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -42,6 +43,14 @@ httpInstance.interceptors.response.use(
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
     ElMessage({ type: 'warning', message: error.response.data.message });
+    //401 token 失效处理
+    const userStore = useUserStore();
+    if (error.response.status === 401) {
+      // 清除用户数据
+      // 跳转登录页面
+      userStore.clearUserInfo();
+      router.push('/login');
+    }
     return Promise.reject(error);
   }
 );

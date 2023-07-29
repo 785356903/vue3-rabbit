@@ -57,8 +57,8 @@ const submitForm = formEl => {
   if (!formEl) return;
   formEl.validate(async valid => {
     if (valid) {
-      const res = await userStore.getUserInfo({ account, password });
-      if (res.result) {
+      await userStore.getUserInfo({ account, password });
+      if (userStore && userStore.userInfo.token) {
         ElMessage({ type: 'success', message: '登录成功' });
         router.replace({ path: '/' });
       }
