@@ -3,17 +3,25 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import 'element-plus/theme-chalk/el-message.css';
+import { useUserStore } from '@/stores/login';
 //创建一个axios实例
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
   timeout: 5000,
-  // headers: {'X-Custom-Header': 'foobar'}
+  // headers: {'Authorization': 'foobar'}
 });
 
 // 添加请求拦截器
 httpInstance.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
+    //1.从pinia获取token数据
+    const userStore = useUserStore();
+    const token = userStore.userInfo.token;
+    if (token) {
+      //2按照后瑞的要求拼接土okn数据
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
   },
   function (error) {

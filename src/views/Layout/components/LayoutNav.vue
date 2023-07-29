@@ -1,17 +1,20 @@
 <!-- @format -->
 
-<script setup></script>
+<script setup>
+import { useUserStore } from '@/stores/login';
+const userStore = useUserStore();
+</script>
 
 <template>
   <nav class="app-topnav">
     <div class="container">
       <ul>
         <!-- 多模板渲染 区分登录状态和非登录状态 -->
-        <template v-if="false">
+        <template v-if="userStore.userInfo.token">
           <li>
             <a href="javascript:;">
               <i class="iconfont icon-user"></i>
-              周杰伦
+              {{ userStore.userInfo.account }}
             </a>
           </li>
           <li>
