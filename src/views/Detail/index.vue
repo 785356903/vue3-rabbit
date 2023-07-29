@@ -5,7 +5,10 @@ import { getDetail } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import GoodHot from './components/DetailHot.vue';
-
+import { ElMessage } from 'element-plus';
+import 'element-plus/theme-chalk/el-message.css';
+import { useCartStore } from '@/stores/cartStore';
+const cartStore = useCartStore();
 const route = useRoute();
 const goods = ref({});
 const getGoods = async () => {
@@ -16,8 +19,37 @@ const getGoods = async () => {
 onMounted(() => getGoods());
 
 // sku规格被操作时
+let skuObj = {};
 const skuChange = sku => {
-  console.log(sku);
+  skuObj = sku;
+  console.log(skuObj);
+};
+
+// 商品计数
+const count = ref(1);
+const countChange = number => {
+  console.log(number);
+  // count.value = number
+};
+
+// 添加购物车
+const addCart = () => {
+  if (skuObj.skuId) {
+    // 规格已经选择 触发 action 函数
+    cartStore.addCart({
+      id: goods.value.id, // 商品id
+      name: goods.value.name, // 商品名称
+      picture: goods.value.mainPictures[0], // 图片
+      price: goods.value.price, // 商品价格
+      count: count.value, // 商品数量
+      skuId: skuObj.skuId, // skuId
+      attrsText: skuObj.specsText, // 商品规格文本
+      selected: true, // 商品是否选中
+    });
+  } else {
+    // 规格没有选择 提示用户
+    ElMessage({ type: 'warning', message: '请选择规格' });
+  }
 };
 </script>
 
@@ -110,10 +142,10 @@ const skuChange = sku => {
               <!-- sku组件 -->
               <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
-
+              <el-input-number v-model="count" :min="1" @change="countChange" />
               <!-- 按钮组件 -->
               <div>
-                <el-button size="large" class="btn">加入购物车</el-button>
+                <el-button size="large" class="btn" @click="addCart">加入购物车</el-button>
               </div>
             </div>
           </div>
