@@ -14,8 +14,12 @@ export const useUserStore = defineStore(
       const res = await loginAPI({ account, password });
       userInfo.value = res.result;
     };
+    // 退出时清除用户信息
+    const clearUserInfo = () => {
+      userInfo.value = {};
+    };
     // 3. 以对象的格式把state和action return
-    return { userInfo, getUserInfo };
+    return { userInfo, getUserInfo, clearUserInfo };
   },
   {
     persist: true, //可以自定义配置存储的地方，这是默认储存
