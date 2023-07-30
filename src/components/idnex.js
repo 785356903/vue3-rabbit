@@ -12,4 +12,4 @@ export const componentPlugin = {
     app.component('XtxSku', Sku);
   },
 };
-console.log(componentPlugin);
+// console.log(componentPlugin);

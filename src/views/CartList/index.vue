@@ -4,11 +4,18 @@
 import { useCartStore } from '@/stores/cartStore';
 const cartStore = useCartStore();
 
+// 单选 single
 const singleCheck = (i, selected) => {
   // console.log(i, selected);
   //store cartList数组无法知道要修改谁的选中状态？
   //除了selected补充一个用来筛选的参数-skuId
   cartStore.singleCheck(i.skuId, selected);
+};
+
+//全选
+const allCheck = selected => {
+  console.log(selected);
+  cartStore.allCheck(selected);
 };
 </script>
 
@@ -20,7 +27,9 @@ const singleCheck = (i, selected) => {
           <thead>
             <tr>
               <th width="120">
-                <el-checkbox @change="cartStore.allChecks" />
+                <el-checkbox
+                  :model-value="cartStore.isAll"
+                  @change="selected => allCheck(selected)" />
               </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>
@@ -85,8 +94,8 @@ const singleCheck = (i, selected) => {
       <!-- 操作栏 -->
       <div class="action">
         <div class="batch">
-          共 {{ cartStore.allCount }} 件商品，已选择 2 件，商品合计：
-          <span class="red">¥ 200.00</span>
+          共 {{ cartStore.allCount }} 件商品，已选择 {{ cartStore.selectedCount }} 件，商品合计：
+          <span class="red">¥ {{ cartStore.selectedPrice }}</span>
         </div>
         <div class="total">
           <el-button size="large" type="primary">下单结算</el-button>
