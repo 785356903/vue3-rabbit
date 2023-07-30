@@ -20,6 +20,7 @@ export const useCartStore = defineStore(
       const res = await findNewCartListAPI();
       cartList.value = res.result;
     };
+    // 添加购物车
     const addCart = async goods => {
       const { skuId, count } = goods;
       if (isLogin.value) {
@@ -53,6 +54,11 @@ export const useCartStore = defineStore(
         // 2.过滤方法筛 - filter
         cartList.value = cartList.value.filter(v => v.skuId != skuId);
       }
+    };
+
+    // 清除购物车
+    const clearCart = () => {
+      cartList.value = [];
     };
 
     // 单选功能
@@ -97,6 +103,7 @@ export const useCartStore = defineStore(
       singleCheck,
       allCheck,
       updateNewList,
+      clearCart,
     };
   },
   {
