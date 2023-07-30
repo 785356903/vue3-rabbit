@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <script setup>
-import { useUserStore } from '@/stores/login';
+import { useUserStore } from '@/stores/userStore';
 import { useRouter } from 'vue-router';
 const userStore = useUserStore();
 const router = useRouter();
@@ -82,3 +82,4 @@ const confirm = () => {
   }
 }
 </style>
+@/stores/userStore

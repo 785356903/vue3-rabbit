@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import 'element-plus/theme-chalk/el-message.css';
-import { useUserStore } from '@/stores/login';
+import { useUserStore } from '@/stores/userStore';
 import router from '@/router';
 //创建一个axios实例
 const httpInstance = axios.create({
