@@ -2,17 +2,14 @@
 
 <script setup>
 import { useUserStore } from '@/stores/userStore';
-import { useCartStore } from '@/stores/cartStore';
 
 import { useRouter } from 'vue-router';
 const userStore = useUserStore();
-const cartStore = useCartStore();
 const router = useRouter();
 const confirm = () => {
   // 退出登录业务逻辑实现
   userStore.clearUserInfo();
   // 执行清除购物车
-  cartStore.clearCart();
   router.push('/login');
 };
 </script>
