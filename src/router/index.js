@@ -11,7 +11,9 @@ import CartList from '@/views/CartList/index.vue';
 import Checkout from '@/views/Checkout/index.vue';
 import Pay from '@/views/Pay/index.vue';
 import PayBack from '@/views/Pay/PayBack.vue';
-
+import Member from '@/views/Member/index.vue';
+import MemberInfo from '@/views/Member/components/UserInfo.vue';
+import MemberOrder from '@/views/Member/components/UserOrder.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -27,39 +29,56 @@ const router = createRouter({
           component: Home,
         },
         {
-          path: 'category/:id',
+          path: '/category/:id',
           name: 'category',
           component: Category,
         },
         {
-          path: 'category/sub/:id',
+          path: '/category/sub/:id',
           name: 'sub',
           component: SubCategory,
         },
         {
-          path: 'detail/:id',
+          path: '/detail/:id',
           name: 'detail',
           component: Detail,
         },
         {
-          path: 'cartlist',
+          path: '/cartlist',
           name: 'cartlist',
           component: CartList,
         },
         {
-          path: 'checkout',
+          path: '/checkout',
           name: 'checkout',
           component: Checkout,
         },
         {
-          path: 'pay',
+          path: '/pay',
           name: 'pay',
           component: Pay,
         },
         {
-          path: 'paycallback',
+          path: '/paycallback',
           name: 'paycallback',
           component: PayBack,
+        },
+        {
+          path: '/member',
+          name: 'member',
+          component: Member,
+          children: [
+            {
+              path: '',
+              name: 'info',
+              component: MemberInfo,
+            },
+            {
+              path: 'order',
+              name: 'order',
+              component: MemberOrder,
+            },
+          ],
         },
       ],
     },
