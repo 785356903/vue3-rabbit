@@ -1,35 +1,76 @@
 # vue3-rabbit
 
-This template should help get you started developing with Vue 3 in Vite.
+# 仿小兔鲜儿商城
 
-## Recommended IDE Setup
+## 技术选型
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+vue3 + vite + Pinia
 
-## Customize configuration
+### vue3组合式api体验
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. 代码量变少了
+2. 分散式维护转变为集中式维护
 
-## Project Setup
+## vue3的更多优势
 
-```sh
-npm install
-```
+### 更容易维护
 
-### Compile and Hot-Reload for Development
+1. 组合式API
+2. 更好的TS支持
 
-```sh
-npm run dev
-```
+### 更快的速度
 
-### Compile and Minify for Production
+1. 重写diff算法
+2. 模板编译优化
+3. 更高效的组件初始化
 
-```sh
-npm run build
-```
+### 更小的体积
 
-### Lint with [ESLint](https://eslint.org/)
+1. 良好的TreeShanking(摇树优化)
 
-```sh
-npm run lint
-```
+   - 编译阶段利用`ES6 Module`判断哪些模块已经加载
+
+   - 判断那些模块和变量未被使用或者引用，进而删除对应代码
+
+2. 按需引入
+
+### 更优的数据响应式
+
+1. Proxy
+
+## Pinia
+
+Pinia 是vue的专属的最新状态管理库,是Vuex状态管理工具的替代品
+
+1. 提供更加简单的AP!(去掉了mutation)
+2. 提供符合组合式风格的API(和Vue3新语法统一)
+3. 去掉了modules的概念，每一个store都是一个独立的模块
+4. 搭配TypeScript一起使用提供可靠的类型推断
+
+
+
+## 项目展示
+
+### 登录
+
+![image-20230817175047910](assets/image-20230817175047910.png)
+
+### 首页
+
+![image-20230817175002310](assets/image-20230817175002310.png)
+
+### 商品详情
+
+![image-20230817175212950](assets/image-20230817175212950.png)
+
+### 购物车
+
+![image-20230817175244423](assets/image-20230817175244423.png)
+
+### 会员中心
+
+![image-20230817175424774](assets/image-20230817175424774.png)
+
+
+
+# 部分功能未完善...
